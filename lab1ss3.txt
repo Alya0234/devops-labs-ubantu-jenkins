@@ -1,0 +1,63 @@
+Started by user alya kumari
+Obtained Jenkinsfile from git https://github.com/Alya0234/devops-labs-ubantu-jenkins.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/DevOps-Lab1-Pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/Alya0234/devops-labs-ubantu-jenkins.git
+ > git init /var/lib/jenkins/workspace/DevOps-Lab1-Pipeline # timeout=10
+Fetching upstream changes from https://github.com/Alya0234/devops-labs-ubantu-jenkins.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.53.0'
+ > git fetch --tags --force --progress -- https://github.com/Alya0234/devops-labs-ubantu-jenkins.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/Alya0234/devops-labs-ubantu-jenkins.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision c13456aba5186defebbb72e88b9e9316a794550d (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f c13456aba5186defebbb72e88b9e9316a794550d # timeout=10
+Commit message: "Add Java application and Jenkins CI pipeline"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] echo
+Compiling Java application...
+[Pipeline] sh
++ javac assignment.java
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run Application)
+[Pipeline] echo
+Running Java application...
+[Pipeline] sh
++ java Assignment
+Hello from DevOps Lab 1!
+Java application built successfully.
+Jenkins CI/CD pipeline is working.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+CI/CD Pipeline completed successfully!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
