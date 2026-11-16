@@ -1,0 +1,274 @@
+    1  sudo apt update && sudo apt install -y ansible
+    2  ansible-playbook --syntax-check ansible/playbook.yml
+    3  ansible-playbook -i ansible/inventory.ini --syntax-check ansible/playbook.yml
+    4  ansible-playbook -i ansible/inventory.ini ansible/playbook.yml
+    5  ls -la /tmp/lab3-logs
+    6  cd terraform
+    7  terraform init
+    8  sudo apt-get update && sudo apt-get install -y gnupg software-properties-common wget
+    9  wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+   10  echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+   11  sudo apt update && sudo apt-get install -y terraform
+   12  terraform init
+   13  terraform apply -auto-approve
+   14  rm -rf .terraform .terraform.lock.hcl
+   15  terraform init
+   16  terraform apply -auto-approve
+   17  cp -r /mnt/c/Users/Alya/Desktop/lab3-devops/terraform ~/terraform-lab
+   18  cd ~/terraform-lab
+   19  terraform init
+   20  terraform apply -auto-approve
+   21  cd /mnt/c/Users/Alya/Desktop/lab3-devops/monitoring
+   22  mkdir -p /mnt/c/Users/Alya/Desktop/lab3-devops/monitoring
+   23  cd /mnt/c/Users/Alya/Desktop/lab3-devops/monitoring
+   24  promtool check config prometheus.yml
+   25  sudo apt update && sudo apt install -y prometheus
+   26  promtool check config prometheus.yml
+   27  sudo apt-get install -y apt-transport-https software-properties-common wget
+   28  sudo mkdir -p /etc/apt/keyrings/
+   29  wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null
+   30  echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
+   31  sudo apt update && sudo apt-get install -y grafana
+   32  sudo service grafana-server start
+   33  http://localhost:3000
+   34  java -version
+   35  sudo apt update && sudo apt install default-jre -y
+   36  wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+   37  echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/sudoers.d/../apt/sources.list.d/elastic-8.x.list
+   38  sudo apt update && sudo apt install elasticsearch -y
+   39  wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+   40  echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/sudoers.d/../apt/sources.list.d/elastic-8.x.list
+   41  sudo apt update && sudo apt install elasticsearch -y
+   42  sudo systemctl daemon-reload
+   43  sudo systemctl enable elasticsearch.service
+   44  sudo systemctl start elasticsearch.service
+   45  sudo apt install logstash -y
+   46  sudo apt install kibana -y
+   47  sudo systemctl enable logstash.service kibana.service
+   48  sudo systemctl start logstash.service kibana.service
+   49  sudo systemctl status logstash.service kibana.service
+   50  pip install selenium
+   51  sudo apt update && sudo apt install python3-pip -y
+   52  pip install selenium
+   53  python3 -m venv venv
+   54  source venv/bin/activate
+   55  pip install selenium
+   56  sudo apt install python3.14-venv -y
+   57  python3 -m venv venv
+   58  source venv/bin/activate
+   59  pip install selenium
+   60  Installing collected packages: sortedcontainers, websocket-client, urllib3, typing_extensions, sniffio, pysocks, idna, h11, certifi, attrs, wsproto, outcome, trio, trio-websocket, selenium
+   61  Successfully installed attrs-26.1.0 certifi-2026.10.23 h11-0.16.0 idna-3.20 outcome-1.3.0.post0 pysocks-1.7.1 selenium-4.52.0 sniffio-1.3.1 sortedcontainers-2.4.0 trio-0.35.0 trio-websocket-0.12.2 typing_extensions-4.16.0 urllib3-2.8.0 websocket-client-1.9.2 wsproto-1.3.2
+   62  (venv) alya@Alyahp:/mnt/c/Users/Alya/Desktop/lab3-devops$ 
+   63  cat << 'EOF' > test_selenium.py
+   64  from selenium import webdriver
+   65  from selenium.webdriver.chrome.options import Options
+   66  options = Options()
+   67  options.add_argument("--headless")
+   68  options.add_argument("--no-sandbox")
+   69  options.add_argument("--disable-dev-shm-usage")
+   70  driver = webdriver.Chrome(options=options)
+   71  driver.get("https://www.google.com")
+   72  print("Page Title:", driver.title)
+   73  driver.quit()
+   74  EOF
+   75  python test_selenium.py
+   76  sudo apt install firefox -y
+   77  pip install webdriver-manager
+   78  cat << 'EOF' > test_api.py
+   79  import urllib.request
+   80  url = "https://www.google.com"
+   81  try:
+   82      response = urllib.request.urlopen(url)
+   83      print("SUCCESS: Connected to", url)
+   84      print("Status Code:", response.getcode())
+   85  except Exception as e:
+   86      print("Connection failed:", e)
+   87  EOF
+   88  python test_api.py
+   89  git init
+   90  git add .
+   91  echo "# lab3-devops" >> README.md
+   92  git init
+   93  git add README.md
+   94  git commit -m "first commit"
+   95  git branch -M main
+   96  git remote add origin https://github.com/Alya0234/lab3-devops.git
+   97  git push -u origin main
+   98  sudo apt update
+   99  docker --version
+  100  kubectl version --client
+  101  minikube version
+  102  sudo apt update
+  103  sudo apt install -y curl wget apt-transport-https
+  104  sudo mkdir -p -m 755 /etc/apt/keyrings
+  105  curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.34/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+  106  echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.34/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+  107  sudo apt update
+  108  sudo apt install -y kubectl
+  109  ping -c 4 google.com
+  110  ping -c 4 8.8.8.8
+  111  sudo apt update
+  112  sudo apt install -y kubectl
+  113  kubectl version --client
+  114  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+  115  sudo install minikube-linux-amd64 /usr/local/bin/minikube
+  116  minikube version
+  117  docker --version
+  118  docker run hello-world
+  119  sudo usermod -aG docker $USER
+  120  newgrp docker
+  121  docker run hello-world
+  122  groups
+  123  ls -l /var/run/docker.sock
+  124  id
+  125  sudo docker run hello-world
+  126  minikube start --driver=docker
+  127  minikube status
+  128  minikube
+  129  type: Control Plane
+  130  host: Running
+  131  kubelet: Running
+  132  apiserver: Running
+  133  kubeconfig: Configured
+  134  minikube status
+  135  minikube start --driver=docker
+  136  minikube status
+  137  sudo usermod -aG docker $USER
+  138  exit
+  139  groups
+  140  docker run hello-world
+  141  minikube start --driver=docker
+  142  cat /etc/os-release
+  143  uname -a
+  144  minikube config view
+  145  docker version
+  146  docker info
+  147  minikube start --driver=docker --alsologtostderr -v=3
+  148  docker info --format '{{.OSType}}'
+  149  docker --version
+  150  docker --version
+  151  mkdir -p ~/kubernetes-lab
+  152  cd ~/kubernetes-lab
+  153  cat > deployment.yaml <<'EOF'
+  154  apiVersion: apps/v1
+  155  kind: Deployment
+  156  metadata:
+  157    name: nginx-deployment
+  158  spec:
+  159    replicas: 2
+  160    selector:
+  161      matchLabels:
+  162        app: nginx
+  163    template:
+  164      metadata:
+  165        labels:
+  166          app: nginx
+  167      spec:
+  168        containers:
+  169        - name: nginx
+  170          image: nginx:latest
+  171          ports:
+  172          - containerPort: 80
+  173  EOF
+  174  cat > service.yaml <<'EOF'
+  175  apiVersion: v1
+  176  kind: Service
+  177  metadata:
+  178    name: nginx-service
+  179  spec:
+  180    type: NodePort
+  181    selector:
+  182      app: nginx
+  183    ports:
+  184    - port: 80
+  185      targetPort: 80
+  186      nodePort: 30080
+  187  EOF
+  188  ls -l
+  189  cd ~/kubernetes-lab
+  190  ;31R
+  191  sudo systemctl status jenkins
+  192  udo systemctl status jenkins
+  193  sudo systemctl status jenkins
+  194  wsl -d Ubuntu
+  195  exit
+  196  sudo systemctl status jenkins
+  197  which jenkins
+  198  ls /usr/share/jenkins
+  199  alya@Alyahp:/mnt/c/Users/Alya/Desktop$ which jenkins
+  200  alya@Alyahp:/mnt/c/Users/Alya/Desktop$ ls /usr/share/jenkins
+  201  ls: cannot access '/usr/share/jenkins': No such file or directory
+  202  alya@Alyahp:/mnt/c/Users/Alya/Desktop$ 
+  203  java -version
+  204  docker --version
+  205  lsb_release -a
+  206  docker ps -a
+  207  java -version
+  208  lsb_release -a
+  209  docker info
+  210  git --version
+  211  free -h
+  212  java -version
+  213  docker info
+  214  git config --global --list
+  215  git config --global user.name "Alya Kumari"
+  216  git config --global user.email "alialyii6677@gmail.com"
+  217  git config --global --list
+  218  java -version
+  219  docker info --format '{{.ServerVersion}}'
+  220  java -version
+  221  Docker version: 29.6.1
+  222  OpenJDK 25.0.4.1
+  223  sudo mkdir -p /etc/apt/keyrings
+  224  sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
+  225  echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list
+  226  sudo apt update
+  227  apt-cache policy jenkins
+  228  alya@Alyahp:/mnt/c/Users/Alya/Desktop$ 
+  229  apt-cache policy jenkins | head -n 12
+  230  sudo apt install jenkins -y
+  231  ps -p 1 -o comm=
+  232  sudo systemctl enable --now jenkins
+  233  sudo systemctl status jenkins --no-pager
+  234  Test-NetConnection localhost -Port 8080
+  235  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+  236  sudo journalctl -u jenkins -n 60 --no-pager
+  237  getent hosts updates.jenkins.io
+  238  getent hosts google.com
+  239  curl -I --max-time 15 https://updates.jenkins.io/update-center.json
+  240  sudo systemctl restart jenkins
+  241  cd ~/Desktop
+  242  git config --global --list
+  243  git clone https://github.com/Alya0234/devops-labs-ubantu-jenkins.git
+  244  ls
+  245  devops-labs-ubantu-jenkins
+  246  cd devops-labs-ubantu-jenkins
+  247  ls -la
+  248  nano assignment.java
+  249  javac assignment.java
+  250  java Assignment
+  251  sudo apt update
+  252  sudo apt install default-jdk -y
+  253  javac -version
+  254  javac assignment.java
+  255  mv assignment.java Assignment.java
+  256  javac Assignment.java
+  257  java Assignment
+  258  devops-labs-ubantu-jenkins
+  259  nano Jenkinsfile
+  260  ls -l
+  261  nano assignment.java
+  262  nano Jenkinsfile
+  263  rm -f Assignment.class
+  264  javac assignment.java
+  265  java Assignment
+  266  git status
+  267  git add assignment.java Jenkinsfile README.md
+  268  git commit -m "Add Java application and Jenkins CI pipeline"
+  269  git push origin main
+  270  sudo systemctl restart jenkins
+  271  sudo systemctl status jenkins --no-pager
+  272  curl -I --max-time 10 http://localhost:8080
+  273  cd /mnt/c/Users/Alya/Desktop/devops-labs-ubantu-jenkins
+  274  history > lab1-terminal-history.txt
